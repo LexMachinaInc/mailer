@@ -5,7 +5,7 @@
 from collections import namedtuple
 
 
-version_info = namedtuple('version_info', ('major', 'minor', 'micro', 'releaselevel', 'serial'))(4, 0, '2', 'post', 1)
+version_info = namedtuple('version_info', ('major', 'minor', 'micro', 'releaselevel', 'serial'))(4, 0, '2', 'post', 2)
 version = ".".join([str(i) for i in version_info[:3]] + [version_info.releaselevel + str(version_info.serial)] if version_info.releaselevel != 'final' else [])
 
 author = namedtuple('Author', ['name', 'email'])("Alice Bevan-McGregor", 'alice@gothcandy.com')

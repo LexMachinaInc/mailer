@@ -1,0 +1,64 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["marrow/"]
+
+[tool.hatch.build.targets.sdist]
+packages = ["marrow/"]
+
+[project]
+name = 'marrow.mailer'
+version = '4.0.2+post2'
+description = "A light-weight modular mail delivery framework for Python 2.7+, 3.3+, Pypy, and Pypy3."
+authors = [
+  { name = "Alice Bevan-McGregor", email = "alice@gothcandy.com" },
+]
+license = 'MIT'
+dependencies = [
+    'marrow.util < 2.0',
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 2.6",
+    "Programming Language :: Python :: 2.7",
+    "Programming Language :: Python :: 3.3",
+    "Programming Language :: Python :: 3.4",
+    "Programming Language :: Python :: 3.5",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+]
+
+[project.optional-dependencies]
+develop = [
+    'pytest', 'pytest-cov', 'pytest-spec', 'pytest-flakes', 'coverage', 'transaction'
+]
+requests = [
+    'requests',
+]
+
+[project.entry-points."marrow.mailer.manager"]
+immediate = 'marrow.mailer.manager.immediate:ImmediateManager'
+futures = 'marrow.mailer.manager.futures:FuturesManager'
+dynamic = 'marrow.mailer.manager.dynamic:DynamicManager'
+
+[project.entry-points."marrow.mailer.transport"]
+amazon = 'marrow.mailer.transport.ses:AmazonTransport'
+mock = 'marrow.mailer.transport.mock:MockTransport'
+smtp = 'marrow.mailer.transport.smtp:SMTPTransport'
+mbox = 'marrow.mailer.transport.mbox:MailboxTransport'
+mailbox = 'marrow.mailer.transport.mbox:MailboxTransport'
+maildir = 'marrow.mailer.transport.maildir:MaildirTransport'
+sendmail = 'marrow.mailer.transport.sendmail:SendmailTransport'
+imap = 'marrow.mailer.transport.imap:IMAPTransport'
+appengine = 'marrow.mailer.transport.gae:AppEngineTransport'
+logging = 'marrow.mailer.transport.log:LoggingTransport'
+postmark = 'marrow.mailer.transport.postmark:PostmarkTransport'
+sendgrid = 'marrow.mailer.transport.sendgrid:SendgridTransport'
+mailgun = 'marrow.mailer.transport.mailgun:MailgunTransport[requests]'
