@@ -4,7 +4,6 @@
 
 from __future__ import unicode_literals
 
-import imghdr
 import os
 import sys
 import time
@@ -360,6 +359,7 @@ class Message(object):
 		else:
 			raise TypeError("Unable to read image contents")
 
+		import imghdr
 		subtype = imghdr.what(None, data)
 		self.attach(name, data, 'image', subtype, True)
 
