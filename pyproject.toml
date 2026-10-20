@@ -10,7 +10,7 @@ packages = ["marrow/"]
 
 [project]
 name = 'marrow.mailer'
-version = '4.0.2+post2'
+version = '4.0.2+post3'
 description = "A light-weight modular mail delivery framework for Python 2.7+, 3.3+, Pypy, and Pypy3."
 authors = [
   { name = "Alice Bevan-McGregor", email = "alice@gothcandy.com" },
